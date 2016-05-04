@@ -1,5 +1,8 @@
-<h1>New Country</h1>
+<% if params[:course_id] %>
+<h1>New Lecture</h1>
 
-<%= render 'form' %>
+<%= render 'form', :course_id => params[:course_id] %>
 
-<%= link_to 'Back', lectures_path %>
+<%= link_to 'Back', course_path(:id=>params[:course_id]) %>
+
+<% end %>

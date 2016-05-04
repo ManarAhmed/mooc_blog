@@ -15,15 +15,20 @@ class CoursesController < ApplicationController
       respond_to do |format|
          if @course.save
             format.html {redirect_to @course, notice:'Course Was successfully created.'}
-            format.json {render :show, status: :created, location: @course}
          else
             format.html {reder :new}
-            format.json {render json: @course.errors,status: :unprocessable_entity}   
          end
       end
    end
    
    def update
+    respond_to do |format|
+      if @course.update(course_params)
+        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
    end
    
    def edit
@@ -33,6 +38,10 @@ class CoursesController < ApplicationController
    end
    
    def destroy
+    @course.destroy
+    respond_to do |format|
+      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+    end
    end
    
  private  

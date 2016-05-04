@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :lectures do
     resources :comments
   end
+  resources :courses do
+    resources :lectures
+  end
   get 'pages/index'
 
   get 'pages/home'

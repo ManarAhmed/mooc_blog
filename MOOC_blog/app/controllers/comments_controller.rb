@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
      @comment = Comment.new(comment_params)
       respond_to do |format|
          if @comment.save
-            format.html {redirect_to @comment, notice:'Comment Was successfully created.'}
+            format.html {redirect_to controller:"lectures" , action: "show", id:params[:lecture_id]}
          else
             format.html {reder :new} 
          end

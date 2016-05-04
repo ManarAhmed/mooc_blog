@@ -1,7 +1,10 @@
 class LecturesController < ApplicationController
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+skip_before_action :verify_authenticity_token
+before_action :set_lecture, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   def index
-    @lectures = Lecture.all.order(:cached_votes_up => 'desc')
+    @course = Course.find(params[:course_id])
+    @lectures = @course.lectures
+#    @lectures = Lecture.all.order(:cached_votes_up => 'desc')
   end
 
   def show
@@ -35,6 +38,7 @@ class LecturesController < ApplicationController
   end
 
   def new
+    @course_id= params[:lecture_id];
     @lecture = Lecture.new
   end
 
@@ -67,6 +71,6 @@ private
   end
 
   def lecture_params
-    params.require(:lecture).permit(:title, :content, :lecture_id)
+    params.require(:lecture).permit(:title, :content, :id, :course_id, :user_id)
   end
 end

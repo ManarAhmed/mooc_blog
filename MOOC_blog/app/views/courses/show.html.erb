@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+  <strong>Title:</strong>
+  <%= raw(@course.course_title) %>
+ <!--  <\% @course.lectures.each do |k| %>
+	<li><\%= link_to "k.title", show_lecture_path(@course) %></li>
+  <\%end%> -->
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

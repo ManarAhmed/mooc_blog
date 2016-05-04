@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MOOCBlog</title>
+  <%= javascript_include_tag :ckeditor %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+ 
+ <header>
+   <nav class="navbar navbar-default">
+   <ul class="nav navbar-nav">
+        <li><%= link_to "User", users_path  %></li>
+        <li><%= link_to "Lectures", lectures_path  %></li>
+        <li><%= link_to "Courses", courses_path  %></li>
+   </ul>
+    
+     <% if current_user %>
+       <%= link_to destroy_user_session_path, method: :delete do%>
+       <button type="button" class="btn btn-default navbar-btn">Sign out</button>
+  <% end %> 
+               <img src="<%=current_user.profile_picture %>" class="profile-image img-circle pull-right" height="50px" width="50px"><b class="pull-right"> <%= current_user.name %> </b>
+
+  <% else %>
+       <%= link_to new_user_session_path do%>
+       <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+       <% end %>
+       <% end %>
+   </nav>
+       
+  </header>
+
+<%= yield %>
+</div>
+</body>
+</html>

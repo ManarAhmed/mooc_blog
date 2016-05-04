@@ -1,0 +1,8 @@
+<%= div_for(comment,class:"comment") do %>
+<p>
+    <strong class="pull-right">Posted <%= time_ago_in_words(comment.created_at) %> ago</strong><br>
+    <%#*The h method is commonly used to escape HTML and Javascript from user-input forms.%>
+    <strong><%= comment.comment_title %> </strong><br>
+    <%= comment.body %>
+</p>
+<% end %>

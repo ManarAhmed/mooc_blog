@@ -1,0 +1,7 @@
+<h>New Course</h>
+<%= form_for(@course) do |f| %>
+<%= f.label :course_title %>:
+<%= f.cktext_area :course_title, :width => 100 %>
+<%= f.submit %>
+
+<% end %>

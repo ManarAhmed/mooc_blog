@@ -5,8 +5,10 @@
   <%= @lecture.title %><br>
    <strong>Content:</strong>
   <%= raw(@lecture.content) %>
+  <strong>Download Link:   </strong>
+  <%= link_to "Download File", @lecture.attachment_url %>
 </p>
-<br><hr>
+<br><hr> 
 
 
 <%= link_to like_lecture_path(@lecture), class: "like",method: :put do %>

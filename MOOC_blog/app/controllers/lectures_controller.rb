@@ -71,6 +71,6 @@ private
   end
 
   def lecture_params
-    params.require(:lecture).permit(:title, :content, :id, :course_id, :user_id)
+    params.require(:lecture).permit(:title, :content, :image, :attachment, :id, :course_id, :user_id)
   end
 end

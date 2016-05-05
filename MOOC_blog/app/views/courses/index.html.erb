@@ -22,6 +22,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th></th>
       <th>Author</th>
       <th>Show Content</th>
     </tr>
@@ -31,6 +32,7 @@
     <% @course.each do |course| %>
       <tr style="font-size : 24px;">
           <td><p  style="font-size : 24px;"><%= raw(course.course_title) %></p></td>
+          <td><p  style="font-size : 24px;"><%= raw(course.image) %></p></td>
           <td><p  style="font-size : 24px;"><%= raw(User.find(course.user_id).name) %></p></td>
           <td><p  style="font-size : 24px;"><%= link_to 'Show', course ,class:"btn btn-info" %></p></td>
       </tr>
@@ -38,9 +40,9 @@
   </tbody>
 </table>
 <br>
-
+<% if current_user && current_user.user_type == "instructor" %>
 <%= link_to 'New Course', new_course_path ,class:"btn btn-info" %>
-
+<% end %>
 <div style="height:50px;"></div>
 </div>
 </div>

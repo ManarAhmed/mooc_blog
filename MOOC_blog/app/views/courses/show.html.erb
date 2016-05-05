@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 <p class="text-center" style="font-size: 24px; padding :20px;">
   <strong>Course Title:</strong>
-  <%= raw(@course.course_title) %><br>
+  <%= raw(@course.course_title) %><br><br>
+  <%= image_tag @course.image %>
   </p>
   
   
@@ -16,10 +17,12 @@
 
 <br>
 
-<%= link_to 'Back', courses_path %>
-<%= link_to 'Add Lecture', new_lecture_path(:course_id =>@course.id) %>
-<%#= link_to 'Lectures', lectures_course_path(@course) %>
+<%= link_to 'Back', courses_path,class:"btn btn-success"  %>
 <% if current_user && current_user.id == @course.user_id %>
-<%= link_to 'Edit', edit_course_path(@course) %> 
-<%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_course_path(@course),class:"btn btn-warning" %> 
+<%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-danger"%>
 <% end %>
+<% if current_user && current_user.user_type == "instructor" %>
+  <%= link_to 'Add Lecture', new_lecture_path(:course_id =>@course.id) ,class:"btn btn-info "%>
+<% end %>
+<br> <br> <br>

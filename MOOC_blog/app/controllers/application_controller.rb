@@ -16,11 +16,15 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.for(:sign_up) << :gender
     devise_parameter_sanitizer.for(:account_update) << :gender
-
+    
+    devise_parameter_sanitizer.for(:sign_up) << :user_type
+    devise_parameter_sanitizer.for(:account_update) << :user_type
+    
     devise_parameter_sanitizer.for(:sign_up) << :profile_picture
     devise_parameter_sanitizer.for(:account_update) << :profile_picture
 
     devise_parameter_sanitizer.for(:sign_up) << :is_active
     devise_parameter_sanitizer.for(:account_update) << :is_active
+
   end
 end

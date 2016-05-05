@@ -52,7 +52,7 @@
               <% end %>
               <li><%= link_to "Lectures", lectures_path  %></li>
               <li><%= link_to "Courses", courses_path  %></li>
-              <% if current_user %>
+              <% if current_user && current_user.user_type == "instructor" %>
               <li><a href="/courses/new">Add Course   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
               </li>
               <li>

@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
       @course = Course.new(course_params)
       respond_to do |format|
          if @course.save
-            format.html {redirect_to @course, notice:'Course Was successfully created.'}
+            format.html {redirect_to @course}
          else
             format.html {reder :new}
          end
@@ -50,7 +50,7 @@ class CoursesController < ApplicationController
    end
    
    def course_params
-      params.require(:course).permit(:course_title)
+      params.require(:course).permit(:course_title,:image,:user_id)
    end
    
 end

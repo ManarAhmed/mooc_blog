@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/courses/index.html.erb</file>
+            <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/lectures/update.html.erb</file>
+            <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/lectures/show.html.erb</file>
+            <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/lectures/list.erb</file>
+            <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/lectures/index.html.erb</file>
+            <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/lectures/show.json.jbuilder</file>
+            <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/courses/show.html.erb</file>
             <file>file:/home/manar/mooc_blog/MOOC_blog/app/views/layouts/application.html.erb</file>
         </group>
     </open-files>

@@ -4,5 +4,6 @@
     <%#*The h method is commonly used to escape HTML and Javascript from user-input forms.%>
     <strong><%= comment.comment_title %> </strong><br>
     <%= comment.body %>
+    <%=link_to "Edit comment", edit_comment_path(comment.id) %>
 </p>
 <% end %>

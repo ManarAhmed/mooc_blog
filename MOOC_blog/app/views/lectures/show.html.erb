@@ -25,6 +25,10 @@ unlike
     <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
     <span class="badge"><%= @lecture.get_downvotes.size%></span>
 </button>
+<%#*if 5 user dislike the lecture it is considered as spam%>
+  <% if @lecture.get_downvotes.size == 5 %>
+    <% Lecture.destroy(@lecture.id) %>
+  <% end %>
 <% end %>
 </div>
 <br><hr> 
@@ -71,9 +75,9 @@ unlike
 
 <div class="col-md-offset-2">
 <% if current_user && current_user.id == @lecture.user_id %>
-  <%= link_to 'Edit', edit_lecture_path(@lecture) %> <br>
-  <%= link_to 'Destroy', @lecture, method: :delete, data: { confirm: 'Are you sure?' } %> <br>
+  <%= link_to 'Edit', edit_lecture_path(@lecture) ,class:"btn btn-warning"%> 
+  <%= link_to 'Destroy', @lecture, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-danger"%> 
 <% end %>
-<%= link_to 'Back', course_path(:id=>@lecture.course_id) %>
+<%= link_to 'Back', course_path(:id=>@lecture.course_id),class:"btn btn-info"%>
 </div>
 <div style="height: 50px;"></div>

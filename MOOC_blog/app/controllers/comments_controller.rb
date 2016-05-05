@@ -24,6 +24,13 @@ class CommentsController < ApplicationController
    end
    
    def update
+     respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to @comment }
+      else
+        format.html { render :edit }
+      end
+    end
    end
    
    def edit

@@ -3,9 +3,9 @@ class Lecture < ActiveRecord::Base
 	mount_uploader :image, ImageUploader 
   belongs_to :course
 	belongs_to :user
-  has_many :comments  # , :as=>:recipient
+  has_many :comments ,:dependent=>:delete_all # , :as=>:recipient
 #  has_many :upload_files
   
 	acts_as_votable
-	acts_as_commentable
+#	acts_as_commentable
 end

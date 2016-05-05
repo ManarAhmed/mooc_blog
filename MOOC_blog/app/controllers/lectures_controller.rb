@@ -2,9 +2,13 @@ class LecturesController < ApplicationController
 skip_before_action :verify_authenticity_token
 before_action :set_lecture, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   def index
+
+    @lectures = Lecture.all.order(:created_at => 'asc')
+  end
+  def list
     @course = Course.find(params[:course_id])
     @lectures = @course.lectures
-#    @lectures = Lecture.all.order(:cached_votes_up => 'desc')
+#  @lectures = Lecture.all.order(:cached_votes_up => 'desc')
   end
 
   def show

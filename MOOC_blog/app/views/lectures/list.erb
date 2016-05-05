@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lectures</h1>
+<% @lectures.each do |lecture| %>
+<div class = "blog well">
+  <h1><%= lecture.title %></h1>
+
+  <%= raw(lecture.content) %>
+  <div style="height: 10px;"></div>
+  <%= link_to 'Show more >>', lecture %>
+  <% if current_user && current_user.id = @lecture.user_id %>
+  <%= link_to 'Edit', edit_lecture_path(lecture) %>
+  <%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>
+<% end %>

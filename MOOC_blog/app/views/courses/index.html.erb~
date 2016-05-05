@@ -1,22 +1,47 @@
-<h1>Hello To MoCourses Website</h1><br />
+
+<style >
+  body{
+    background-image: url("/assets/images/Books-laptop-smartphone-uhd-wallpapers1.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    font-size : 24px;
+  }
+  #trans{
+  background-color: rgba(255,255,255,0.5);
+  font-size : 24px;
+  }
+  h1{
+    color: orange;
+  }
+</style>
+<div id="trans">
+<div class ="container">
+<h1>Top Courses</h1><br />
 <% @course.each{|k| puts k.course_title}%>
 
-<table border="1">
+<table  class="table table-hover">
   <thead>
-    <tr>
+    <tr class=" table-danger">
       <th>Title</th>
+      <th>Author</th>
+      <th>Show Content</th>
     </tr>
   </thead>
 
   <tbody>
     <% @course.each do |course| %>
       <tr>
-        <td><%= course.course_title %></td>
+        <td><%= raw(course.course_title) %></td>
+        <td><%= raw(User.find(course.user_id).name) %></td>
+        <td><%= link_to 'Show', course %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'New Course', new_course_path %>
+
+<div style="height:50px;"></div>
+</div>
+</div>

@@ -1,13 +1,25 @@
 <p id="notice"><%= notice %></p>
-
-  <strong>Title:</strong>
+<p class="text-center" style="font-size: 24px; padding :20px;">
+  <strong>Course Title:</strong>
   <%= raw(@course.course_title) %><br>
-  <% @course.lectures.each do |k| %>
-	<li><%= link_to k.title, lecture_path(k) %></li>
-  <%  end %>
+  </p>
+  
+  
+  <% @course.lectures.each do |lecture| %>
+        <div class = "blog well">
+            <h1 style="color: blueviolet;"><%= lecture.title %></h1>
+          <%= raw(lecture.content) %>
+          <div style="height: 10px;"></div>
+          <%= link_to 'Show more >>', lecture_path(lecture) %>
+        </div>
+  <% end %>
 
 <br>
-<%= link_to 'Edit', edit_course_path(@course) %> |
+
 <%= link_to 'Back', courses_path %>
 <%= link_to 'Add Lecture', new_lecture_path(:course_id =>@course.id) %>
 <%#= link_to 'Lectures', lectures_course_path(@course) %>
+<% if current_user && current_user.id == @course.user_id %>
+<%= link_to 'Edit', edit_course_path(@course) %> 
+<%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

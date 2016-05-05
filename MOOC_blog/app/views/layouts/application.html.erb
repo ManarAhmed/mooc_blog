@@ -14,43 +14,54 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container" style = "padding-top:20px;">
 
       <!-- Static navbar -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
+      <nav class="navbar navbar-inverse">
+        <div class="padded">
+          <div class="navbar-header pull-right">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"><img alt="Brand" src="/images/Italy.jpg" width="50px" height="50px"></span>
+              <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="btn navbar-brand" href="#">Alemny</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <% if current_user %>
-              <li><%= link_to "Update Profile", edit_user_registration_path(:id=>current_user.id)  %></li>
+              <% if current_user %>
+                <li>
+                  <div calss = "navbar-header pull-right" style="margin-top: 7px; margin-right:-10px;">
+                    <img src="<%=  current_user.profile_picture %>" class=" profile-image img-circle img-responsive" height="70px" width="70px">
+                   </div>
+                </li>
+                
+                <li>
+                    <div calss = "navbar-header pull-right" style="margin-top: 7px; margin-right:-10px;">
+                  <p  style="margin-top: 10px;"><b style="color: white; font-size: 14px;"> <%= current_user.name %> </b></p>
+                    </div>
+                </li>
+                <li><%= link_to "Update Profile", edit_user_registration_path(:id=>current_user.id)  %></li>    
               <% end %>
               <li><%= link_to "Lectures", lectures_path  %></li>
               <li><%= link_to "Courses", courses_path  %></li>
-              <li><%= link_to "Add Course", new_course_path  %>
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              <% if current_user %>
+              <li><a href="/courses/new">Add Course   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
               </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-               <% if current_user %>
-                  <li>
-                      <img src="<%=current_user.profile_picture %>" class="profile-image img-circle pull-right" height="50px" width="50px">
-                      <p class="pull-right"><b> <%= current_user.name %> </b></p>
-                      <%= link_to "Sign out" ,destroy_user_session_path, method: :delete %>
-                      
-                  </li>
+              <li>
+                <a href="/users/sign_out" data-method="delete">Sign out</a>
+                <%#= link_to "" ,destroy_user_session_path, method: :delete %>
+              </li>
               <% else %>
-                  <li><%= link_to "Sign in" ,new_user_session_path %></li>
+              <li><%= link_to "Sign in" ,new_user_session_path %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

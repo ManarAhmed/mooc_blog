@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class = "blog well text-centered">
   <strong>Title:</strong>
   <%= @lecture.title %><br>
    <strong>Content:</strong>
   <%= raw(@lecture.content) %>
   <strong>Download Link:   </strong>
   <%= link_to "Download File", @lecture.attachment_url %>
-</p>
-<br><hr> 
+</div>
 
-
+<div class = "blog well">
+    like
 <%= link_to like_lecture_path(@lecture), class: "like",method: :put do %>
 <button type="button" class="btn btn-info" aria-label="Left Align">
-	<span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
-	<span class="badge"><%= @lecture.get_upvotes.size%></span>
+    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= @lecture.get_upvotes.size%></span>
 </button>
 <% end %>
 
+unlike
 <%= link_to unlike_lecture_path(@lecture), class: "unlike",method: :put do %>
-<button type="button" class="btn btn-info" aria-label="Left Align">
-	<span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
-	<span class="badge"><%= @lecture.get_downvotes.size%></span>
+<button type="button" class="btn btn-danger" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= @lecture.get_downvotes.size%></span>
 </button>
 <% end %>
+</div>
+<br><hr> 
+
 <div class="row">
     <% if current_user %>
     <div class="large-1 columns">
@@ -37,6 +41,7 @@
        <%=  render @lecture.comments %>
       </div>
     </div>
+    <% if current_user %>
     <div class="row">
     <%= form_for [@lecture,Comment.new] do |f|%>
     <div class="form-group col-md-9">
@@ -57,7 +62,11 @@
       </div>
     </div>
     <% end %>
-        
+    <% else %>
+    <div class="alert alert-warning">
+      <strong>Warning!</strong> Login to add your comment.
+    </div>
+    <% end %>    
 </div>
 
 

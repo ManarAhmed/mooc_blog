@@ -1,25 +1,46 @@
-<h1>Hello To MoCourses Website</h1><br />
-<% @course.each{|k| puts k.course_title}%>
 
-<table border="1">
+<style >
+  body{
+    background-image: url("/assets/images/Books-laptop-smartphone-uhd-wallpapers1.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    font-size : 24px;
+  }
+  #trans{
+  background-color: rgba(255,255,255,0.7);
+  font-size : 24px;
+  }
+  h1{
+    color: orange;
+  }
+</style>
+<div id="trans" style="padding: 20px;">
+<h1>Top Courses</h1><br />
+<% @course.each{|k| puts k.course_title}%>
+<div class="table-responsive">
+    <table  class="table table-hover ">
   <thead>
     <tr>
       <th>Title</th>
+      <th>Author</th>
+      <th>Show Content</th>
     </tr>
   </thead>
 
   <tbody>
     <% @course.each do |course| %>
-      <tr>
-        <td><%= raw(course.course_title) %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr style="font-size : 24px;">
+          <td><p  style="font-size : 24px;"><%= raw(course.course_title) %></p></td>
+          <td><p  style="font-size : 24px;"><%= raw(User.find(course.user_id).name) %></p></td>
+          <td><p  style="font-size : 24px;"><%= link_to 'Show', course ,class:"btn btn-info" %></p></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+<%= link_to 'New Course', new_course_path ,class:"btn btn-info" %>
+
+<div style="height:50px;"></div>
+</div>
+</div>

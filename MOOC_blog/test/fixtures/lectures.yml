@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  cotent: MyText
+  content: MyText
   user_id: 1
   course_id: 1
 
 two:
   title: MyString
-  cotent: MyText
+  content: MyText
   user_id: 1
   course_id: 1

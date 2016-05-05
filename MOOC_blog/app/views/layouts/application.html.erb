@@ -39,15 +39,14 @@
             <ul class="nav navbar-nav">
               <% if current_user %>
                 <li>
-                  <div calss = "navbar-header pull-right" style="margin-top: 7px; margin-right:-10px;">
-                    <img src="<%=  current_user.profile_picture %>" class=" profile-image img-circle img-responsive" height="70px" width="70px">
-                   </div>
+                    <a href="#"><img src="<%=  current_user.profile_picture %>" class=" profile-image img-circle img-responsive" height="60px" width="60px">
+                   </a>
                 </li>
                 
                 <li>
-                    <div calss = "navbar-header pull-right" style="margin-top: 7px; margin-right:-10px;">
-                  <p  style="margin-top: 10px;"><b style="color: white; font-size: 14px;"> <%= current_user.name %> </b></p>
-                    </div>
+                    <a href="#">
+                     <b style="color: white; font-size: 14px;"> <%= current_user.name %> </b>
+                    </a>
                 </li>
                 <li><%= link_to "Update Profile", edit_user_registration_path(:id=>current_user.id)  %></li>    
               <% end %>

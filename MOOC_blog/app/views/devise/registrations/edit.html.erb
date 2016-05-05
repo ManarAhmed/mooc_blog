@@ -1,15 +1,22 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<link type="text/css" rel="stylesheet" href="/bootstrap/css/login.css">
+
+<div id="bg"></div>
+
+<div class="col-lg-offset-2 col-md-8">
+ <div class="form-head"> 
+  
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-
+<div style="height: 20px;"></div>
+     <h1 class="text-center">Update Profile Form</h1>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true ,class:"form-control"%>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%= f.email_field :email ,class:"form-control" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -18,21 +25,21 @@
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off" ,class:"form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" ,class:"form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off" ,class:"form-control" %>
   </div>
 <div class="field">
     <%= f.label :date_of_birth %><br />
-    <%= f.text_field :date_of_birth ,"data-provide" => 'datepicker'%>
+    <%= f.text_field :date_of_birth ,"data-provide" => 'datepicker',class:"form-control" %>
   </div>
   
   <div class="field">
@@ -44,14 +51,45 @@
     <%= f.label :profile_picture %><br>
     <%= f.file_field :profile_picture %>
   </div>
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="actions" style="margin-bottom: 0px; margin-left: 20px;">
+    <%= f.submit "Update" %><br /><br />
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <% end %>
+ </div>
+<div class="acc_Cancel"> 
+    <h2 style="margin-top: 0px; padding-left: 20px;">Cancel my account</h2>
+     <p style="font-size: 18px; padding-left: 20px;">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn-cancl" %></p>
+<br><br>
+  
+</div>
+</div>
+<style>
+    #bg {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: url(/assets/images/sign_up3.jpeg) no-repeat center center fixed;
+        background-size: cover;
+        -webkit-filter: blur(5px);    
+    }
+   .form-head{
+        background-color: rgba(255,255,255,0.5);
+    }
+    .forms input{
+        background-color: #777777;
+    }
+    .field{
+      padding: 20px;
+    }
+    .acc_Cancel{
+      background-color: rgba(255,255,255,0.5);
+    }
+    .btn-cancl{
+      margin-left: 20px;
+    }
+</style>
 
 <%= link_to "Back", :back %>
 

@@ -3,6 +3,7 @@
 <h1>Listing Lectures</h1>
 <% @lectures.each do |lecture| %>
 <div class = "blog well">
+  <%= image_tag lecture.image ,:size=>"150x150" ,class:"pull-right" %>
   <h1><%= lecture.title %></h1>
 
   <%= raw(lecture.content) %>

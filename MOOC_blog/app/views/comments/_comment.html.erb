@@ -1,9 +1,10 @@
 <%= div_for(comment,class:"comment") do %>
 <p>
-    <strong class="pull-right">Posted <%= time_ago_in_words(comment.created_at) %> ago</strong><br>
+    
     <%#*The h method is commonly used to escape HTML and Javascript from user-input forms.%>
-    <strong><%= comment.comment_title %> </strong><br>
-    <%= comment.body %>
+    <strong style="font-size: 16px; color: darkcyan"><%= comment.comment_title %> </strong><br>
+       <p style="font-size: 18px;"><%= comment.body %></p>
+    <strong>Posted <%= time_ago_in_words(comment.created_at) %> ago</strong><br>
     <%=link_to "Edit comment", edit_comment_path(comment.id) %>
 </p>
 <% end %>

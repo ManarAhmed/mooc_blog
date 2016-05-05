@@ -32,7 +32,7 @@
     <% @course.each do |course| %>
       <tr style="font-size : 24px;">
           <td><p  style="font-size : 24px;"><%= raw(course.course_title) %></p></td>
-          <td><p  style="font-size : 24px;"><%= raw(course.image) %></p></td>
+          <td><p  style="font-size : 24px;"><%= image_tag course.image ,:size=>"70x70" %></p></td>
           <td><p  style="font-size : 24px;"><%= raw(User.find(course.user_id).name) %></p></td>
           <td><p  style="font-size : 24px;"><%= link_to 'Show', course ,class:"btn btn-info" %></p></td>
       </tr>

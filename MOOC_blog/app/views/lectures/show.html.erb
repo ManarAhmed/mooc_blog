@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <div class = "blog well text-centered">
-  <strong>Title:</strong>
-  <%= @lecture.title %><br>
-   <strong>Content:</strong>
-  <%= raw(@lecture.content) %>
-  <strong>Download Link:   </strong>
+  <%= image_tag @lecture.image ,:size=>"150x150" ,class:"pull-right" %>
+  <strong style="font-size: 16px; color: darkcyan">Title:</strong>
+  <p style="font-size: 18px;"><%= @lecture.title %></p><br>
+   <strong style="font-size: 20px; color: darkcyan">Content:</strong>
+   <p style="font-size: 18px;"><%= raw(@lecture.content) %></p>
+  <strong style="font-size: 20px; color: darkcyan">Download Link:   </strong>
   <a href="<%= @lecture.attachment_url%>" download><%= @lecture.attachment%></a>
   <%#= link_to "Download File", @lecture.attachment_url. %>
-</div>
-
-<div class = "blog well">
+  <br><br>
     like
 <%= link_to like_lecture_path(@lecture), class: "like",method: :put do %>
 <button type="button" class="btn btn-info" aria-label="Left Align">
@@ -34,14 +33,14 @@ unlike
 <br><hr> 
 
 <div class="row">
-   
+   <div class = "blog well">
 <%#= render 'comments/comment_form' %>
-    <div class="row">
       <h2>Comments</h2>
       <div id="comments">
        <%=  render @lecture.comments %>
       </div>
-    </div>
+   </div>
+    <div class = "blog well">
     <% if current_user %>
     <div class="row">
     <%= form_for [@lecture,Comment.new] do |f|%>
@@ -79,5 +78,6 @@ unlike
   <%= link_to 'Destroy', @lecture, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-danger"%> 
 <% end %>
 <%= link_to 'Back', course_path(:id=>@lecture.course_id),class:"btn btn-info"%>
+</div>
 </div>
 <div style="height: 50px;"></div>

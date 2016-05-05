@@ -5,7 +5,7 @@
   <%= image_tag @course.image %>
   </p>
   
-  
+  <strong style="font-size: 24px; color: brown;">Lectures: </strong>
   <% @course.lectures.each do |lecture| %>
         <div class = "blog well">
             <h1 style="color: blueviolet;"><%= lecture.title %></h1>

@@ -1,15 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Lectures</h1>
-
 <p id="notice"><%= notice %></p>
 
 <h1>All Lectures</h1>
 <% @lectures.each do |lecture| %>
 <div class = "blog well">
-  <h1><%= lecture.title %></h1>
+  <%= image_tag lecture.image ,:size=>"125x125" ,class:"pull-right" %>
+  <h2 style="color: darkcyan"><%= lecture.title %></h2>
 
-  <%= raw(lecture.content) %>
+  <p style="font-size: 24px;"> <%= raw(lecture.content)%></p>
   <div style="height: 10px;"></div>
   <%= link_to 'Show more >>', lecture %>
   
